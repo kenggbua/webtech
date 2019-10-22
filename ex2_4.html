@@ -1,0 +1,80 @@
+<html lang="de">
+<head>
+    <title>CSS in Action</title>
+    <style>
+        header h1{font-family: verdana; size: 2em; margin: 10px; display: inline-block; height: 60px}
+        header {background-color: rgb(187,204,232); }
+        #logoImage {display: inline-block; position: relative; float: right; margin: 10px; height: 4em}
+        
+        nav {background-color: rgb(20,90,204)}
+        nav > ul {display: flex;  list-style: none; padding: 10px; margin: 0}
+        nav > ul > li {margin-right: 20px}
+        nav > ul :nth-child(2) {color: red}
+        .content {margin: 20px}
+        
+        section:nth-of-type(2) h1{color: red; margin-top: 80px}
+        .content > section > h1 {font-family: Verdana; size: 1.5em}
+        img {margin: 5px;}
+       
+       footer{clear: both}
+        footer > ul {display: flex;background-color: rgb(29,90,204);justify-content: center; align-items: center; list-style: none; padding: 5px}
+        footer > ul > li {margin-right: 20px}
+        .content a[href^=http]:after {content: "(external)"}
+        section img{float: left; width: 100px}
+        section:nth-child(2n)  img{float: right; width: 100px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>CSS in Action</h1>
+    <img id="logoImage" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg">
+</header>
+<nav>
+    <ul>
+        <li>Topic 1</li>
+        <li>Topic 2</li>
+        <li>Topic 3</li>
+        <li>Topic 4</li>
+    </ul>
+</nav>
+<div class="content">
+    <section>
+        <h1>Topic 1</h1>
+        <img src="pic1.jpg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,  sed diam voluptua.
+        <p>
+            <strong>Lorem ipsum</strong> dolor sit <a href="http://www.aau.at" target="_blank">amet</a>, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam <a href="erat.html" target="_blank">erat</a>.
+        </p>
+    </section>
+
+    <section>
+        <h1>Topic 2</h1>
+        <img src="pic2.jpg"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam <strong>nonumy</strong> eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit <a href="http://www.aau.at" target="_blank">amet</a>.
+        </p>
+    </section>
+
+    <section>
+        <h1>Topic 3</h1>
+        <img src="pic3.jpg"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+    </section>
+</div>
+<footer>
+    <ul>
+        <li>Impressum</li>
+        <li>Legal</li>
+        <li>Contact</li>
+    </ul>
+</footer>
+
+</body>
+
+</html>

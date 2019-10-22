@@ -1,0 +1,86 @@
+<html lang="de">
+<head>
+    <style>
+
+        input:invalid {
+            color: red;
+        }
+
+        textarea:invalid {
+            color: red;
+        }
+
+        body {
+            display: block;
+            text-align: center;
+        }
+
+        input:focus {
+            background-color: lightblue
+        }
+
+    </style>
+    <title>fu eldredge</title>
+</head>
+<body>
+<h1>Your Glass Order</h1>
+
+<form action="" method="post" enctype="text/plain">
+    <fieldset>
+        <legend>Contact Data</legend>
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="Name">Name</label><br>
+        <input type="text" id='Name' name="Name" placeholder="Kevin Wiltschnig" required><br>
+        <label for="address">Address</label><br>
+        <input type="text" id="address" name="address" placeholder="Address 23" required><br>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" placeholder="someemail@some.com" required><br>
+        <label for="phonenumer">Phone number</label><br>
+        <input type="tel" id="phonenumer" name="phonenumber" placeholder="0837232151" pattern="[0-9]+"><br>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Glas specs</legend>
+        <label for="panes">Number of panes</label><br>
+        <select id="panes" name="panes" required>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select><br>
+        <label>Size</label><br>
+        <input type="radio" value="8" id="sizeone" name="size">
+        <label for="sizeone">8mm</label><br>
+        <input type="radio" value="10" id="sizetwo" name="size">
+        <label for="sizetwo">10mm</label><br>
+        <input type="radio" value="12" id="sizethree" name="size">
+        <label for="sizethree">12mm</label><br>
+        <label for="width">Width</label><br>
+        <input type="number" id="width" name="width" min=1 max=200 required><br>
+        <label for="height">Height</label><br>
+        <input type="number" id="height" name="hight" min=1 max=200 required><br>
+        <label for="color">Farbe</label><br>
+        <input type="color" id="color" name="color"><br>
+        <label for="textarea">Comment</label>
+        <textarea maxlength="700" id="textarea"></textarea><br>
+
+    </fieldset>
+
+    <input type="reset">
+
+    <input type="submit">
+</form>
+<script src='calculate.js' defer></script>
+
+
+</body>
+
+</html>
