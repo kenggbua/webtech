@@ -31,7 +31,6 @@ function update(event) {
     } else document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = document.getElementById("text").value;
     document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].innerHTML = document.getElementById("heading").value;
     document.getElementById("selectSection").options[document.getElementById("selectSection").selectedIndex] = new Option(document.getElementById("heading").value)
-
     document.getElementById("form").reset();
 
 }
