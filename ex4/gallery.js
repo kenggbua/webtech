@@ -7,7 +7,7 @@ function showImg(e) {
    document.getElementById("displayDIV").innerHTML += '<a id="prev" onclick="plusSlides(-1)" class="prev">&#10094;</a>' +
        '<a onclick="plusSlides(1)" class="next" id="next">&#10095;</a>'+
        '<button onclick="schliessen()" class="close" id="close">X</button>' +
-       '<button onclick="slideShow()" class="close">Slideshow</button>'
+       '<button onclick="slideShow()" class="close" id="slideshow">Slideshow</button>'
    ;
 
 

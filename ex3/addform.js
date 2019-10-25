@@ -28,9 +28,18 @@ function update(event) {
     event.preventDefault();
     if (!(document.getElementById("text").value.includes("<h1>"))) {
         document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = '<h1></h1>' + document.getElementById("text").value;
-    } else document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = document.getElementById("text").value;
-    document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].innerHTML = document.getElementById("heading").value;
-    document.getElementById("selectSection").options[document.getElementById("selectSection").selectedIndex] = new Option(document.getElementById("heading").value)
+    }
+
+    if(!(document.getElementById("text").value.includes(document.getElementById("heading").value)) &&
+        document.getElementById("heading").value !==  document.getElementById("selectSection").options[document.getElementById("selectSection").selectedIndex].text){
+        document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = document.getElementById("text").value;
+        document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].innerHTML = document.getElementById("heading").value;
+    }else {
+        document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = document.getElementById("text").value;
+    }
+
+    document.getElementById("selectSection").options[document.getElementById("selectSection").selectedIndex] = new Option(document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].innerHTML)
+
     document.getElementById("form").reset();
 
 }
@@ -42,9 +51,6 @@ function insert() {
     document.getElementById("push").disabled = false;
 
 }
-
-
-
 
 
 
