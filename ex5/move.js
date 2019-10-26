@@ -3,9 +3,8 @@ function moving(e) {
     me.style.top = e.clientY-5;
     me.style.left = e.clientX-5;
 }
-
-let counter = 0;
 let placed = 0;
+
 function stopmoving(e) {
 
     let x = e.clientX, y = e.clientY,
@@ -15,44 +14,53 @@ function stopmoving(e) {
     this.addEventListener("click", dragstart)
 
     if(elementMouseIsOver[1].tagName === "DIV"){
-        placed++;
         elementMouseIsOver[1].appendChild(this)
-    }else elementMouseIsOver[1].appendChild(this)
+    }else {
+        document.getElementById("puzzleSource").appendChild(this)
+    }
 
 
    if(checkIfWon() === 4){
-       alert("you have won")
-   }else if(checkPiecesPlaced() === 5){
-       alert("some pieces are wrong")
+       setTimeout(function () {
+           alert("you have won")
+       }, 100)
+
+   }else if(checkPiecesPlaced(e) === 4){
+      setTimeout(function () {
+          alert("you lost")
+      }, 100)
    }
 
 
 
 }
 
+
 function checkPiecesPlaced() {
+
     for (let cd of document.getElementsByClassName("puzzlePic")){
         if(cd.hasChildNodes()){
             placed++
         }
     }
-
-    if(placed === 5){
-        return placed
+    console.log(placed);
+    if(placed === 4){
+        return placed;
     }else placed = 0;
+
 
 }
 
 function checkIfWon() {
+    let counter = 0;
+
     for (let cd of document.getElementsByClassName("puzzlePic")){
         let tmp = cd.firstChild
         if(cd.hasChildNodes() && cd.getAttribute("data-result") === tmp.getAttribute("src")){
             counter++;
         }
     }
-    if(counter === 4){
         return counter;
-    }else counter = 0;
 
 }
 
