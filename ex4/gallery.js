@@ -1,13 +1,15 @@
+
+document.getElementById("displayDIV").innerHTML += '<a id="prev" onclick="plusSlides(-1)" class="prev">&#10094;</a>' +
+    '<a onclick="plusSlides(1)" class="next" id="next">&#10095;</a>'+
+    '<button onclick="schliessen()" class="close" id="close">X</button>' +
+    '<button onclick="slideShow()" class="close" id="slideshow">Slideshow</button>'
 function showImg(e) {
 
 
    document.querySelector("#displayDIV .bigIMG").src=e.target.dataset.large;
    document.querySelector("#displayDIV .desc").innerHTML=e.target.alt;
    document.getElementById("displayDIV").style.display="block";
-   document.getElementById("displayDIV").innerHTML += '<a id="prev" onclick="plusSlides(-1)" class="prev">&#10094;</a>' +
-       '<a onclick="plusSlides(1)" class="next" id="next">&#10095;</a>'+
-       '<button onclick="schliessen()" class="close" id="close">X</button>' +
-       '<button onclick="slideShow()" class="close" id="slideshow">Slideshow</button>'
+
    ;
 
 
