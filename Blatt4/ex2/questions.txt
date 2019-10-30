@@ -1,0 +1,5 @@
+a) increment function wird immer wieder aufgerufen und dadurch der counter hochgezählt
+
+greet is now a function with parameter gender and gender is a function with parameter name
+nested function first we create the greet with the gender female and store it in greetWoman then
+we give that greetWoman every female
