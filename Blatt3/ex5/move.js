@@ -1,3 +1,11 @@
+
+
+
+for (let cd of document.getElementById("puzzleSource").childNodes){
+    cd.addEventListener("click", dragstart)
+}
+
+
 function moving(e) {
     let me = document.querySelector(".dragging")
     me.style.top = e.clientY-5;
@@ -7,11 +15,12 @@ let placed = 0;
 
 function stopmoving(e) {
 
-    let x = e.clientX, y = e.clientY,
-        elementMouseIsOver = document.elementsFromPoint(x, y);
+    let x = e.clientX, y = e.clientY, elementMouseIsOver = document.elementsFromPoint(x, y);
     this.classList.remove("dragging");
     window.removeEventListener("mousemove", moving);
-    this.addEventListener("click", dragstart)
+    this.addEventListener("click", dragstart);
+    this.addEventListener("click", stopmoving)
+
 
     if(elementMouseIsOver[1].tagName === "DIV"){
         elementMouseIsOver[1].appendChild(this)
@@ -34,6 +43,18 @@ function stopmoving(e) {
 
 
 }
+
+
+
+function dragstart(e) {
+    this.classList.add("dragging");
+    this.removeEventListener("click", dragstart)
+    this.addEventListener("click", stopmoving)
+    window.addEventListener("mousemove", moving)
+}
+
+
+
 
 
 function checkPiecesPlaced() {
@@ -60,20 +81,6 @@ function checkIfWon() {
             counter++;
         }
     }
-        return counter;
+    return counter;
 
 }
-
-function dragstart(e) {
-    this.classList.add("dragging");
-    this.removeEventListener("click", dragstart)
-    this.addEventListener("click", stopmoving)
-    window.addEventListener("mousemove", moving)
-}
-
-for (let cd of document.getElementById("puzzleSource").childNodes){
-    cd.addEventListener("click", dragstart)
-}
-
-
-

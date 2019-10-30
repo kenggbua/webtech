@@ -31,7 +31,6 @@ function update(event) {
 
     }
 
-
     if(!(document.getElementById("text").value.includes(document.getElementById("heading").value)) &&
         document.getElementById("heading").value !==  document.getElementById("selectSection").options[document.getElementById("selectSection").selectedIndex].text){
         document.getElementsByTagName("h1")[document.getElementById("selectSection").selectedIndex].parentElement.innerHTML = document.getElementById("text").value;

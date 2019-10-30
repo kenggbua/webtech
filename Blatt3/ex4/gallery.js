@@ -1,18 +1,15 @@
 
 document.getElementById("displayDIV").innerHTML += '<a id="prev" onclick="plusSlides(-1)" class="prev">&#10094;</a>' +
     '<a onclick="plusSlides(1)" class="next" id="next">&#10095;</a>'+
-    '<button onclick="schliessen()" class="close" id="close">X</button>' +
-    '<button onclick="slideShow()" class="close" id="slideshow">Slideshow</button>'
+    '<button onclick="close()" class="close" id="close">X</button>' +
+    '<button onclick="slideShow()" class="close" id="slideshow">Slideshow</button>';
+
+
+
 function showImg(e) {
-
-
    document.querySelector("#displayDIV .bigIMG").src=e.target.dataset.large;
    document.querySelector("#displayDIV .desc").innerHTML=e.target.alt;
    document.getElementById("displayDIV").style.display="block";
-
-   ;
-
-
 
 }
 let slideIndex = 0;
@@ -26,7 +23,7 @@ for (let i=0; i< images.length; i++) {
 
 
 
-function schliessen() {
+function close() {
    document.getElementById("displayDIV").style.display="none";
 }
 
@@ -50,7 +47,6 @@ function showSlides(n) {
 function slideShow() {
    plusSlides(1);
    if (document.getElementById("displayDIV").style.display==="block"){
-      setTimeout(slideShow, 2000);
-
+      setTimeout(slideShow, 3000);
    }
 }
