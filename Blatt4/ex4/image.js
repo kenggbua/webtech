@@ -42,3 +42,5 @@ let hugo = new video(12,13,16,20,30)
 
 
 hugo.printmore()
+
+

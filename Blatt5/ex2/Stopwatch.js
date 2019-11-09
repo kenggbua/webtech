@@ -7,7 +7,7 @@ class Stopwatch {
     }
 
     reset() {
-        this.element.innerHTML = "00:00:000"
+        this.element.innerHTML = "00:00:000";
         this.stop();
     }
 

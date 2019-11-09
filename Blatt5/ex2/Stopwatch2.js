@@ -1,11 +1,11 @@
 class Stopwatch2 {
-    constructor(element)
-    {
+    constructor(element) {
         this.element = element;
         this.interval = "";
         this.timeBegan = null;
         this.timeStopped = null;
         this.stoppedDuration = 0;
+        this.stopped = false;
 
 
     }
@@ -23,19 +23,13 @@ class Stopwatch2 {
 
         if (this.timeBegan === null) {
             this.timeBegan = new Date();
-        }else {
-            clearInterval(this.interval);
-            this.interval = "";
         }
-
-
-
-        if (this.timeStopped !== null) {
+        if (this.timeStopped !== null && this.stopped ) {
             this.stoppedDuration += (new Date() - this.timeStopped);
+            this.stopped = false;
         }
-
-        if(this.interval === "") {
-            this.interval = setInterval(this.update.bind(this), 10);
+        if (this.interval === "") {
+            this.interval = setInterval(this.update.bind(this), 0);
         }
 
     }
@@ -44,19 +38,46 @@ class Stopwatch2 {
 
 
 
-        this.timeBegan.setUTCSeconds(this.timeBegan.getUTCSeconds() - ms/1000);
+        this.timeBegan.setUTCSeconds(this.timeBegan.getUTCSeconds()  - ms/1000);
 
+        this.updateTime();
 
 
     }
 
+    updateTime() {
+
+        let currentTime = new Date()
+            , timeElapsed = new Date(currentTime - this.timeBegan - (new Date() - this.timeStopped + this.stoppedDuration))
+            , mm = timeElapsed.getUTCMinutes()
+            , ss = timeElapsed.getUTCSeconds()
+            , mis = timeElapsed.getUTCMilliseconds();
+
+
+        this.element.innerHTML = (mm > 9 ? mm : "0" + mm) + ":" +
+            (ss > 9 ? ss : "0" + ss) + ":" +
+            (mis > 99 ? mis : mis > 9 ? "0" + mis : "00" + mis);
+    }
+
     minusTime(ms) {
+
         let time = this.element.innerHTML.split(":");
         let mm = time[0];
         let ss = time[1];
-        if(ss - 5 <= 0 && mm === "00"){
-            this.timeBegan = new Date();
-        }else this.timeBegan.setUTCSeconds(this.timeBegan.getUTCSeconds() + ms/1000)
+        console.log(this.interval.active)
+        console.log(parseInt(ss,10) - 5)
+        console.log(mm === "00")
+        if (parseInt(ss,10) - 5 < 0 && mm === "00") {
+            if(this.interval === ""){
+                this.reset();
+            }else {
+                this.timeBegan = new Date();
+            }
+        } else  {
+            this.timeBegan.setUTCSeconds(this.timeBegan.getUTCSeconds() + ms/1000);
+        }
+
+        this.updateTime();
 
 
     }
@@ -64,12 +85,16 @@ class Stopwatch2 {
 
     stop() {
         clearInterval(this.interval);
+        this.timeStopped = new Date();
+        this.stopped = true;
         this.interval = "";
 
     }
 
 
     update() {
+
+
         let currentTime = new Date()
             , timeElapsed = new Date(currentTime - this.timeBegan - this.stoppedDuration)
             , mm = timeElapsed.getUTCMinutes()
@@ -78,23 +103,9 @@ class Stopwatch2 {
 
 
 
-        if(mis >= "999"){
-            ss++;
-            mis = "000";
-        }
-        if(ss >= "60"){
-            mm++;
-            ss = "00";
-        }
-
-        if(mm >= "60"){
-            this.stop();
-        }
-
-
-        this.element.innerHTML =  (mm > 9 ? mm : "0" + mm) + ":" +
-            (ss > 9 ? ss : "0" + ss) + "." +
-            (mis > 9 ? mis : mis > 99 ? "00" + mis : "0" + mis);
+        this.element.innerHTML = (mm > 9 ? mm : "0" + mm) + ":" +
+            (ss > 9 ? ss : "0" + ss) + ":" +
+            (mis > 99 ? mis : mis > 9 ? "0" + mis : "00" + mis);
     }
 
 }
