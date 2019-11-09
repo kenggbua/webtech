@@ -1,0 +1,37 @@
+What is event bubbling and event capturing?
+When an event happens on an element, it first runs the handlers on it,
+then on its parent, then all the way up on other ancestors.
+
+
+Capturing phase – the event goes down to the element.
+Target phase – the event reached the target element.
+Bubbling phase – the event bubbles up from the element.
+
+
+How can you specify what method to use?
+default is bubbling
+capture : true
+elem.addEventListener(..., true)
+
+
+
+
+How can you stop the propagation of events?
+event.stopPropagation()
+event.stopImmediatePropagation()
+If an element has multiple event handlers on a single event,
+then even if one of them stops the bubbling, the other ones still execute.
+
+
+
+What is the difference between this, event.target and event.currentTarget?
+event.target – is the “target” element that initiated the event, it doesn’t change through the bubbling process.
+this(= event.currentTarget) – is the “current” element, the one that has a currently running handler on it.
+
+
+What happens if parent elements have event handlers attached?
+if the propagataion is not stopped their handler will trigger aswell
+
+
+
+What happens if parent and child elements have event handlers attached?

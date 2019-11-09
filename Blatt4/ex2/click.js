@@ -5,7 +5,7 @@ function incrementClickCount(){
         return ++clickCount;
     }
 }
-let z = incrementClickCount();
+const z = incrementClickCount();
 
 
 document.getElementById("myBtn").addEventListener("click", function() {
