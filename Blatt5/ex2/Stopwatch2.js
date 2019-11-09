@@ -52,8 +52,9 @@ class Stopwatch2 {
 
     minusTime(ms) {
         let time = this.element.innerHTML.split(":");
+        let mm = time[0];
         let ss = time[1];
-        if(ss - 5 <= 0){
+        if(ss - 5 <= 0 && mm === "00"){
             this.timeBegan = new Date();
         }else this.timeBegan.setUTCSeconds(this.timeBegan.getUTCSeconds() + ms/1000)
 
