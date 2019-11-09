@@ -1,0 +1,50 @@
+<html>
+<head>
+<style>
+#outer {width:700;height:500;background-color:silver}
+#middle {width:600;height:400;background-color:hotpink}
+#inner {width:500;height:300;background-color:green;margin:50px;top:20px;position:relative}
+</style>
+</head>
+<body>
+<!--
+<div id="outer" onclick="alert('outer')">Outer
+	<div id="inner" onclick="alert('inner')">Inner</div>
+</div> -->
+
+
+
+<div id="outer" >Outer
+	<div id="middle">Middle
+		<div id="inner">Inner
+		</div></div>
+
+</div>
+
+<script>
+
+
+function clicked(e) {
+	console.log("inner")
+}
+
+function clicked2(e){
+	console.log("outer")
+}
+
+function clicked3(e, x){
+<!--	e.stopPropagation() -->
+	if(x){
+		console.log("middle")
+
+	}
+}
+
+document.getElementById("outer").addEventListener("click",clicked2,true);
+document.getElementById("inner").addEventListener("click",clicked, true);
+document.getElementById("middle").addEventListener("click",(e) => {clicked3(e,true)},true);
+
+</script>
+</body>
+
+</html>
