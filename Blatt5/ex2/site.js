@@ -1,5 +1,5 @@
 let el = document.querySelector("#timertext");
-let sw2 = new Stopwatch2(el);
+let sw2 = new Stopwatch(el);
 
 // click events
 document.querySelector("#startBtn").addEventListener("click", () => sw2.start());
@@ -31,6 +31,6 @@ document.addEventListener('keydown', event => {
             sw2.plusTime(5000);
         }
         else if (key === "-") {
-            sw2.minusTime(5000);
+            sw2.plusTime(-5000);
         }
 });

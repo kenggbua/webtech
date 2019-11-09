@@ -6,6 +6,8 @@ class Stopwatch2 {
         this.timeStopped = null;
         this.stoppedDuration = 0;
         this.stopped = false;
+
+
     }
 
     reset() {
@@ -80,5 +82,6 @@ class Stopwatch2 {
         this.element.innerHTML = (mm > 9 ? mm : "0" + mm) + ":" +
             (ss > 9 ? ss : "0" + ss) + ":" +
             (mis > 99 ? mis : mis > 9 ? "0" + mis : "00" + mis);
+
     }
 }

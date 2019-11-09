@@ -1,81 +1,63 @@
-/*
 class Stopwatch {
     constructor(element)
     {
         this.element = element;
         this.interval = "";
+        this.timeStart = 0;
+        this.elapsedTime= 0;
+        this.adjust = 0;
+        this.timeRun = 0;
     }
 
     reset() {
-        this.element.innerHTML = "00:00:000";
-        this.stop();
+        clearInterval(this.interval);
+        this.timeStart = 0;
+        this.elapsedTime = 0;
+        this.update();
     }
 
     start() {
-
-        if(this.interval === ""){
-            this.interval = setInterval(this.update.bind(this),0);
+        if(this.timeStart === 0){
+            this.interval = setInterval(this.update.bind(this), 0)
+            this.timeStart = new Date().getTime();
         }
 
+    }
+    stop() {
+        if(this.timeStart !== 0){
+            clearInterval(this.interval);
+            this.elapsedTime += new Date().getTime() - this.timeStart;
+            this.timeStart = 0;
+        }
     }
 
     plusTime(ms) {
-
-        let time = this.element.innerHTML.split(":");
-        let mm = time[0];
-        let ss = time[1];
-        let mis = time[2];
-       ss = parseInt(ss,10) + ms/1000;
-
-        this.element.innerHTML = mm + ":" + ss + ":" + mis;
-
-    }
-
-    minusTime(ms) {
-        let time = this.element.innerHTML.split(":");
-        let mm = time[0];
-        let ss = time[1];
-        let mis = time[2];
-        if(parseInt(ss,10) - 5 <= 0 && mm === 0){
-            ss = "00";
-            mis = "000";
-        }
-
-        this.element.innerHTML = mm + ":" + ss + ":" + mis;
-    }
-
-    stop() {
-    this.interval = clearInterval(this.interval);
-    this.interval = "";
-
+        this.adjust += ms;
+        this.update();
     }
 
     update() {
-        let time = this.element.innerHTML.split(":");
-        let mm = time[0];
-        let ss = time[1];
-        let mis = time[2];
 
-        mis++;
+        let current = new Date().getTime();
+        if(this.timeStart === 0){
+            this.timeRun = this.elapsedTime + this.adjust;
+        }else this.timeRun = current - this.timeStart + this.elapsedTime + this.adjust;
 
-
-
-        if(mis >= "999"){
-            ss++;
-            mis = "000";
-        }
-        if(ss >= "60"){
-            mm++;
-            ss = "00";
+        if(this.timeRun < 0){
+            if(this.timeStart !== 0){
+                this.timeStart = current;
+            }
+            this.elapsedTime = 0;
+            this.timeRun = 0;
+            this.adjust = 0;
         }
 
-        if(mm >= "60"){
-            this.stop();
-        }
-
-
-        this.element.innerHTML = mm + ":" + ss + ":" + mis;
+        let tmp = new Date(this.timeRun);
+        let mm = tmp.getUTCMinutes();
+        let ss = tmp.getUTCSeconds();
+        let mis = tmp.getUTCMilliseconds();
+        this.element.innerHTML = (mm > 9 ? mm : "0" + mm) + ":" +
+            (ss > 9 ? ss : "0" + ss) + ":" +
+            (mis > 99 ? mis : mis > 9 ? "0" + mis : "00" + mis);
     }
-
 }
-*/
