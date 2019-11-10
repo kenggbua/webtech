@@ -8,8 +8,6 @@ function hideImg(e) {
    document.getElementById("displayDIV").style.display="none";
 }
 
-
-
 function getCurrentImageIdx() {
     let bigImgSrc = document.querySelector("#displayDIV > img").getAttributeNode("src").value;
 
@@ -84,7 +82,7 @@ let intervalID;
 
 function ImageLoader() {
     this.method = "GET";
-    this.url = "https://lyzu.net/img/";
+    this.url = location.href.replace("gallery.html","");
     this.file = "gallery.json";
 }
 
